@@ -9,6 +9,9 @@ set backspace=2" more powerful backspacing
 syntax on
 " 语法高亮
 
+highlight Normal ctermbg=None
+"highlight LineNr ctermfg=DarkGrey
+
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
 " 用浅色高亮当前行
@@ -49,7 +52,8 @@ set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
 " 编码设置
 
-colorscheme desert
+colorscheme onedark
+"colorscheme desert
 " 设置颜色主题
 
 "set guifont=Menlo:h16:cANSI
@@ -140,5 +144,19 @@ au BufWrite /private/tmp/crontab.* set nowritebackup
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup
 
-" for cscope
-source ~/.vim/plugin/cscope_maps.vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+set rtp+=/usr/local/opt/fzf
