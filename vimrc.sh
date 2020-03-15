@@ -16,7 +16,7 @@ autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
 " 用浅色高亮当前行
 
-set smartindent
+" set smartindent
 " 智能对齐
 
 set autoindent
@@ -25,14 +25,17 @@ set autoindent
 set confirm
 " 在处理未保存或只读文件的时候，弹出确认
 
+filetype plugin indent on
+" show existing tab with 4 spaces width
 set tabstop=4
-" Tab键的宽度
-
-set softtabstop=4
+" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-"  统一缩进
+" On pressing tab, insert 4 spaces
+set expandtab
 
-set noexpandtab
+" set softtabstop=4
+
+" set noexpandtab
 " 不要用空格代替制表符
 
 set number
